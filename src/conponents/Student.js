@@ -1,12 +1,11 @@
 import React from 'react'
 
-export default function Student(props) {
+export default function Student({name,sex,birth}) {
     return (
         <li>
-            【姓名】:{props.name},
-            【性别】:{props.sex===1?'男':'女'},
-            【email】:{props.email},
-            【出生日期】:{props.birth}
-        </li>
+        【姓名】{name}
+        【性别】{sex===1?"男":"女"}
+        【出生年份】{birth}
+       </li>
     )
 }
