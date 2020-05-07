@@ -1,9 +1,11 @@
 import React from 'react'
-import ThreeLayout from "./components/common/ThreeLayout"
+// import ThreeLayout from "./components/common/ThreeLayout"
+import FormTest from "./components/FormTest"
 export default function App() {
     return (
         <div>
-            <ThreeLayout
+          <FormTest></FormTest>
+            {/* <ThreeLayout
                 gap={50}
                 left={<div style={{
                     border:"2px solid #008c8c"
@@ -24,7 +26,7 @@ export default function App() {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit officia harum eveniet doloribus temporibus, eaque, nisi ex debitis quisquam assumenda repudiandae architecto. Magnam sunt, distinctio consectetur cum exercitationem asperiores esse?
                     </p>
                 </div>
-            </ThreeLayout>
+            </ThreeLayout> */}
         </div>
     )
 }

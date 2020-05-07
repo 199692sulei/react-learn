@@ -10,7 +10,7 @@ export default function ThreeLayout(props) {
     const datas=Object.assign({},defaultProps,props)
     return (
         <div className="three-layout" style={{
-            minwidth:datas.minWidth
+            minWidth:datas.minWidth
         }}>
              <div className="main">
                  {props.children}
