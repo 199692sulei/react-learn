@@ -1,9 +1,13 @@
-import PropsType from "prop-types"
+import PropTypes from "prop-types"
 export default {
-    children:PropsType.node,
-    groupDatas:PropsType.arrayOf(PropsType.shape({
-        value:PropsType.string.isRequired,
-        text:PropsType.string.isRequired
+    children:PropTypes.node,
+    groupDatas:PropTypes.arrayOf(PropTypes.shape({
+        value:PropTypes.string.isRequired,
+        text:PropTypes.string.isRequired
     })),
-    chooseDatas:PropsType.arrayOf(PropsType.string)
+    chooseDatas:PropTypes.arrayOf(PropTypes.string),
+    singleData: PropTypes.shape({
+        value: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired
+    })
 }

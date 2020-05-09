@@ -1,45 +1,35 @@
 import React, { Component } from 'react'
 import types from "../../../utils/commonTypes"
 import PropTypes from "prop-types"
-export default class CheckBoxGroup extends Component {
-    static defaultProps={
-        datas:[],
-        chooseDatas:[]
-    }
+import withDataGroup from "../HOC/withDataGroup"
+class CheckBox extends Component{
     static propTypes={
-          datas:types.groupDatas.isRequired,
-          name:PropTypes.string.isRequired,
-          chooseDatas:types.chooseDatas,
-          onChange:PropTypes.func
+        name:PropTypes.string.isRequired,
+        chooseDatas:types.chooseDatas.isRequired,
+        onChange:PropTypes.func,
+        info:types.singleData.isRequired
+  }
+  handleChange=e=>{
+    let newArr;
+    if(e.target.checked){
+      newArr=[...this.props.chooseDatas,e.target.value]
+    }else{
+        newArr=this.props.chooseDatas.filter(it=>it!==e.target.value)
     }
-    handleChange=e=>{
-        let newArr;
-        if(e.target.checked){
-          newArr=[...this.props.chooseDatas,e.target.value]
-        }else{
-            newArr=this.props.chooseDatas.filter(it=>it!==e.target.value)
-        }
-        this.props.onChange&&this.props.onChange(newArr,this.props.name,e)
+    this.props.onChange&&this.props.onChange(newArr)
     }
-    getCheckBoxes(){
-     return  this.props.datas.map(it=>(
-           <label key={it.value}>
-                  <input
-                      type="checkbox"
-                      name={this.props.name}
-                      value={it.value}
-                      checked={this.props.chooseDatas.includes(it.value)}
-                      onChange={this.handleChange}
-                  />{it.text}
-           </label>
-       ))
-    }
-    render() {
-        const bs=this.getCheckBoxes()
-        return (
-            <div>
-                {bs}
-            </div>
-        )
-    }
+  render(){
+      return (
+        <label>
+        <input
+            type="checkbox"
+            name={this.props.name}
+            value={this.props.info.value}
+            checked={this.props.chooseDatas.includes(this.props.info.value)}
+            onChange={this.handleChange}
+        />{this.props.info.text}
+      </label>
+      )
+  }
 }
+export default withDataGroup(CheckBox)
